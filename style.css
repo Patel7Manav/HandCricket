@@ -1,0 +1,349 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #4CB050;
+    font-family: 'Roboto', sans-serif;
+}
+
+#Tutorial{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #4cb050;
+    font-family: 'Poppins', sans-serif;
+    color: yellow;
+    z-index: 5;
+    visibility: hidden;
+}
+
+#Tutorial span{
+    margin-left: 98vw;
+}
+
+#Tutorial span img{
+    height: 5vh;
+    width: 2vw;
+}
+
+.TutHead{
+    text-align: center;
+    margin-top: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-size: 2.5rem;
+    color: rgb(214, 15, 15);
+    text-decoration: underline;
+}
+
+#format{
+    display: inline-block;
+    width: 80vw;
+    margin-left: 7rem;
+    font-size: 1.1rem;
+}
+
+#Tosswin{
+    visibility: hidden;
+    font-weight: bold;
+    margin-top: 4vh;
+}
+
+#shotsimg{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-items: center;
+    grid-gap: 0.6rem;
+}
+.container{
+    line-height: 150%;
+    background-color: rgb(241, 206, 176);
+    text-align: center;
+    width: 500px;
+    padding: 30px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    box-shadow: 15px 30px 35px rgba(17, 1, 1, 0.1);
+    border-radius: 10px;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    z-index: 0;
+}
+
+#TossStart{
+    font-weight: bold;
+}
+
+#TossResult{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 6vh;
+    visibility: hidden;
+}
+
+.tossres {
+    width: 5rem;
+    height: 2.5rem;
+    padding: 6px ;
+    background-color: #eaeaea;
+    border: none;
+    cursor: pointer;
+  }
+  .tossres.selected {
+    background-color: #a5d6a7;
+  }
+
+#startMatch{
+    visibility: hidden;
+    margin-top: 8vh;
+}
+
+
+#boy{
+    height: 70px;
+}
+
+.homepage{
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    z-index: 2;
+    
+}
+
+#heading{
+    margin-top: 5vh;
+    text-align: center;
+    font-size: 40px;
+}
+
+#playbutton{
+    margin-left: 47%;
+    margin-top: 20vh;
+    border: none;
+    background-color: rgb(0, 0, 0);
+}
+
+#playbutton img{
+    height: 50px;
+    background-color: black;
+}
+
+#howtoplay{
+    margin-top: 15.1vh;
+    margin-left: 46.3%;
+}
+
+#howtoplay button{
+    width: fit-content;
+    padding: 0.8rem;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1.1rem;
+    color: blue;
+    background-color: yellow;
+}
+
+#howtoplay button:hover{
+    background-color: white;
+    border: 2px solid red;
+    font-size: 20px;
+}
+
+#subhead{
+    text-align: center;
+    margin-top: 5vh;
+    color: yellow;
+    font-size: 23px;
+}
+
+#gamepage{
+    z-index: -3;
+}
+
+.coin{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    margin: 20px auto;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+.coin img{
+    width: 95px;
+}
+.heads,.tails{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.tails{
+    transform: rotateX(180deg);
+}
+@keyframes spin-tails{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(1980deg);
+    }
+}
+@keyframes spin-heads{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(2160deg);
+    }
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+button{
+    width: 120px;
+    padding: 10px 0;
+    border: 2.5px solid #424ae0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#flip-button{
+    background-color: #424ae0;
+    color: #ffffff;
+}
+#flip-button:disabled{
+    background-color: #e1e0ee;
+    border-color: #e1e0ee;
+    color: #101020;
+}
+
+.header, .main{
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    color: white;
+    margin: auto;
+    visibility: hidden;
+}
+
+.main{
+    margin-top: 20px;
+    grid-gap: 4%;
+    grid-template-columns: 20% 50% 20%;
+}
+
+.ScoreBoard{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 300px;
+    justify-items: end;
+    color: white;
+    background-color: black;
+    font-size: 1.3rem;
+    
+}
+
+.MainIn{
+    font-size: 2rem;
+}
+
+#Play{
+    text-align: center;
+    background-color: black;
+}
+
+#Com{
+    text-align: center;
+    background-color: black;
+}
+
+#Live{
+    text-align: center;
+}
+
+#LiveFootage{
+    height: 40vh;
+    background-color: beige;
+}
+.values{
+    justify-self: start;
+    margin-left: 10px;
+}
+
+.headeritems{
+    display: flex;
+    justify-content: center;
+    border: 2px solid white;
+    margin: 4px;
+    font-size: 2rem;
+}
+
+#Player ,#Computer{
+    background-color: #8c182b;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 7px 10px;
+}
+
+#Condition{
+    background-color: aquamarine;
+    width: 60vw;
+    margin: auto;
+    margin-top: 8vh;
+    height: 2.5rem;
+    visibility: hidden;
+
+}
+#Runs{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(4, 4, 93);
+}
+
+#Playershots, #ComputerShots{
+    margin: 0px 30px;
+    background-color: black;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+
+#CurrentScore{
+    background-color: beige;
+    color: #8c182b;
+    font-size: 3.5rem;
+    padding: 15px 0;
+}
+
+.gestures{
+    padding: 0px;
+     margin: 10px; 
+    border: 2px solid white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.gestures:hover{
+    background-color: antiquewhite;
+}
+
+.gesturesonClick{
+    background-color: antiquewhite;
+}
+
+.gest{
+    height: 100px;
+    padding: 5px;
+}
