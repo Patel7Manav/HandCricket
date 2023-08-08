@@ -2,7 +2,7 @@ let coin = document.querySelector(".coin");
 let flipBtn = document.querySelector("#flip-button");
 let state; //0 for player bowl and 1 for bat
 let innings=1;
-
+let foursixcounter=0;
 flipBtn.addEventListener("click", () => {
   let i = Math.floor(Math.random() * 2);
   coin.style.animation = "none";
@@ -20,20 +20,26 @@ flipBtn.addEventListener("click", () => {
    setTimeout(loadToss,3000,i);
 });
 
+let headline="";
 let selectedButton = null;
 
 function selectButton(buttonIndex) {
   // Deselect the previously selected button, if any
-  if (selectedButton !== null) {
+  if (selectedButton != null) {
     selectedButton.classList.remove('selected');
   }
   if(buttonIndex==1)
-  state=1;
+  {state=1;
+  document.querySelector("#combat").style.display='none';
+  }
   else 
-  state=0;
+  {state=0;
+    document.querySelector("#playerbat").style.display='none';
+  }
   const button = document.querySelector('.tossres:nth-child(' + buttonIndex + ')');
   button.classList.add('selected');
   selectedButton = button;
+  document.querySelector("#matchbutton").disabled=false;
 }
 
 function loadToss(tossval){
@@ -44,12 +50,16 @@ function loadToss(tossval){
     let cchoice= Math.floor(Math.random() * 2);
     if(cchoice==1)
     {
+      document.querySelector("#playerbat").style.display='none';
       document.querySelector("#TossResult").innerText=`Computer has won the toss and decided to bat first`;
+      headline="Computer has won the toss and decided to bat first";
       state=0;
     }
     else
     {
+      document.querySelector("#combat").style.display='none';
       document.querySelector("#TossResult").innerText=`Computer has won the toss and decided to bowl first`;
+      headline="Computer has won the toss and decided to bowl first";
       state=1;
     }
   }
@@ -58,6 +68,7 @@ function loadToss(tossval){
     document.querySelector("#Tosswin").style.visibility="visible";
   }
   document.querySelector("#startMatch").style.visibility="visible";
+  document.querySelector("#matchbutton").disabled=false;
 }
 
 function closetut(){
@@ -99,6 +110,18 @@ function loadmatchscreen(){
   document.querySelector("#Tosswin").style.visibility="hidden";
   document.querySelector("#TossResult").style.visibility="hidden";
   document.querySelector("#startMatch").style.visibility="hidden";
+  if(headline=="")
+  {
+    if(state==0)
+    {
+      headline="Player has won the toss and chose to bowl";
+    }
+    else
+    {
+      headline="Player has won the toss and chose to bat";
+    }
+  }
+  document.querySelector("#Condition").innerText=headline;
 }
 
 let runs=0;
@@ -129,9 +152,23 @@ function Runs(playerShot){
     while(computerShot==5){
         computerShot=Math.floor(Math.random()*6)+1;
     }
+    if(computerShot!=6 && computerShot!=4 && foursixcounter==3)
+    {
+      let randomno=Math.floor(Math.random()*2);
+      if(randomno==0)
+      computerShot=4;
+      else
+      computerShot=6;    
+      foursixcounter=0;
+    }
+    else if(computerShot==4 || computerShot==6)
+    foursixcounter=0;
+    else
+    foursixcounter++;
     if(playerShot == computerShot)
     {
         document.querySelector("#CurrentScore").innerHTML="OUT!";
+        playlivefootage("out");
         if(state==0)
         { cwickets++;
           document.querySelector("#ComWkt").innerHTML=cwickets;
@@ -146,12 +183,14 @@ function Runs(playerShot){
         {runs+=playerShot; 
         document.querySelector("#CurrentScore").innerHTML=playerShot;
         document.querySelector("#BatRun").innerHTML=runs;
+        playlivefootage(playerShot);
         }
         else
         {
         cruns+=computerShot; 
         document.querySelector("#CurrentScore").innerHTML=computerShot;
         document.querySelector("#ComRun").innerHTML=cruns;
+        playlivefootage(computerShot);
         }
 
     }
@@ -161,11 +200,20 @@ function Runs(playerShot){
     document.querySelector("#ComBalls").innerHTML=cballs;
     BackColor(playerShot);
     BackColorComp(computerShot);
-    disablebuttons(2000);
-    setTimeout(RemoveColor,2000,playerShot);   
-    setTimeout(RemoveColorComp,2000,computerShot);
+    disablebuttons(7000);
+    setTimeout(RemoveColor,7000,playerShot);   
+    setTimeout(RemoveColorComp,7000,computerShot);
     if(innings==2)
     {
+      if(state==0)
+      {
+        document.querySelector("#Condition").innerText=`Computer needs ${runs-cruns+1} runs in ${30-cballs} balls with ${1-cwickets} wickets remaining`;
+      }
+      else 
+      {
+        document.querySelector("#Condition").innerText=`Player needs ${cruns-runs+1} runs in ${30-balls} balls with ${1-wickets} wickets remaining`;
+      }
+      
       if(state==1)
       {
         if(runs>cruns)
@@ -179,16 +227,20 @@ function Runs(playerShot){
     }
     if(state==0)
     {
-      if(cballs==30 || cwickets==1)
+      if(cballs==30 || cwickets==3)
       { state=1;
         inningsbreak();
+        document.querySelector("#combat").style.display='none';
+        document.querySelector("#playerbat").style.display='inline';
       }
     }
     else
     { 
-      if(balls==30 || wickets==1)
+      if(balls==30 || wickets==3)
       { state=0;
         inningsbreak();
+        document.querySelector("#combat").style.display='inline';
+        document.querySelector("#playerbat").style.display='none';
       }
     }
 }
@@ -197,48 +249,43 @@ function inningsbreak(){
 if(innings==1)
 {
   innings=2;
-  disablebuttons(5000);
-  document.querySelector("#Condition").innerText="Innings Break!!";
+  disablebuttons(25000);
+  setTimeout(playlivefootage,7000,"break");
 }
 else{
+  setTimeout(playlivefootage,7000,"end");
   document.addEventListener("click", handler, true);  
 function handler(e) {
   e.stopPropagation();
   e.preventDefault();
 }
-  if(cruns>runs)
-  document.querySelector("#Condition").innerText="Computer Wins!!";
-  else if(runs>cruns)
-  document.querySelector("#Condition").innerText="Player Wins!!";
-  else 
-  document.querySelector("#Condition").innerText="Match Tied!!";
 }
 }
 
 function BackColor(x){
    let shot=numtostr(x);
    let obj= document.getElementById(shot);
-   obj.style.backgroundColor = "white";
+   obj.classList.add('active');
 }
 
 function BackColorComp(x){
     let shot= numtostr(x);
     let obj= document.getElementById(shot+"C");
-    obj.style.backgroundColor = "white";
+    obj.classList.add('active');
 }
 
 function RemoveColor(x)
 {
     let shot=numtostr(x);
    let obj= document.getElementById(shot);
-   obj.style.backgroundColor = "black";
+   obj.classList.remove('active');
 }
 
 function RemoveColorComp(x)
 {
     let shot=numtostr(x);
    let obj= document.getElementById(shot+"C");
-   obj.style.backgroundColor = "black";
+   obj.classList.remove('active');
 }
 
 function disablebuttons(tim)
@@ -255,4 +302,50 @@ for (let i = 0; i < buttons.length; i++) {
     }, tim); 
   });
 }
+}
+
+function playlivefootage(x)
+{
+  let idd=document.getElementById("LiveFootage");
+  if(x=="out")
+  {
+   idd.innerHTML=`
+  <video class="livevideo" autoplay>
+  <source src="videos/out.mp4">
+</video>
+`
+  }
+  else if(x=="break")
+  {
+    document.querySelector("#Condition").innerText="Innings Break!!";
+    idd.innerHTML=`
+  <video class="livevideo" autoplay loop>
+  <source src="videos/cheerleaderdance.mp4">
+</video>
+`
+  }
+  else if(x=="end")
+  {
+    if(cruns>runs)
+  document.querySelector("#Condition").innerText=`Computer Wins!!`;
+  else if(runs>cruns)
+  document.querySelector("#Condition").innerText="Player Wins!!";
+  else 
+  document.querySelector("#Condition").innerText="Match Tied!!";
+    idd.innerHTML=`
+  <video class="livevideo" autoplay loop>
+  <source src="videos/matchend.mp4">
+</video>
+`
+ 
+  }
+  else
+  {
+    let shot=numtostr(x);
+    idd.innerHTML=`
+    <video class="livevideo" autoplay>
+    <source src="videos/${shot}.mp4">
+  </video>
+    `
+  }
 }

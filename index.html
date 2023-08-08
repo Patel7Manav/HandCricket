@@ -29,11 +29,11 @@
         </div>
         <div class="TutHead">Shots</div>
         <div id="shotsimg">
-            <img src="images/one.png" class="gest">
-            <img src="images/two.png" class="gest">
-            <img src="images/three.png" class="gest">
-            <img src="images/four.png" class="gest">
-            <img src="images/six.png" class="gest">
+            <img src="images/one.png" class="tutgest">
+            <img src="images/two.png" class="tutgest">
+            <img src="images/three.png" class="tutgest">
+            <img src="images/four.png" class="tutgest">
+            <img src="images/six.png" class="tutgest">
             <div>1 runs</div>
             <div>2 runs</div>
             <div>3 runs</div>
@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="homepage">
-        <div id="heading">Welcome To Hand Cricket !</div>
+        <div id="heading">Welcome To Hand Cricket!</div>
         <div id="subhead">Bring back the child in you <img id="boy" src="images/boy.png" alt=""></div>
         <button id="playbutton" onclick="tosstime()">
             <img src="images/retroplay.png" alt="">
@@ -74,14 +74,14 @@
   <button class="tossres" onclick="selectButton(2)">Bowl</button>
         </div>
         <div id="startMatch">
-            <button onclick="loadmatchscreen()">Start Match</button>
+            <button onclick="loadmatchscreen()" id="matchbutton" disabled>Start Match</button>
         </div>
     </div>
     <div id="gamepage">
     <div class="header">
-        <div class="headeritems" id="Player">Player</div>
+        <div class="headeritems" id="Player">Player <img src="images/cricket-bat.png" class="batimg" id="playerbat"></div>
         <div class="headeritems" id="Runs" >Runs</div>
-        <div class="headeritems" id="Computer">Computer</div>
+        <div class="headeritems" id="Computer">Computer <img src="images/cricket-bat.png" class="batimg" id="combat"></div>
         <div class="headeritems" id="Playershots">
             <button class="gestures" id="one" onclick="Runs(1)" ><img src="images/one.png" class="gest"></button>
             <button class="gestures" id="two" onclick="Runs(2)"><img src="images/two.png" class="gest" ></button>
@@ -114,7 +114,7 @@
         <div id="LiveFootage">
 
         </div>
-        <div class="ScoreBoard" id="ComScore">
+        <div class="ScoreBoard">
             <div>Runs:</div>
                 <div class="values" id="ComRun">0</div>
                 <div>Balls:</div>
@@ -124,6 +124,8 @@
         </div>
     </div>
     <div id="Condition"></div>
+    </div>
+    </div>
 </div>
     <script src="script.js"></script>
 </body>

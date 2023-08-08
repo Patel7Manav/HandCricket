@@ -5,7 +5,9 @@
 
 body{
     background-color: #4CB050;
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
+    max-width: 100%;
 }
 
 #Tutorial{
@@ -53,7 +55,6 @@ body{
 }
 
 #shotsimg{
-    margin-top: 2rem;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-items: center;
@@ -111,11 +112,13 @@ body{
 
 .homepage{
     background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
     font-family: 'Press Start 2P', cursive;
     color: white;
     z-index: 2;
@@ -129,10 +132,14 @@ body{
 }
 
 #playbutton{
-    margin-left: 47%;
+    margin-left: 47vw;
     margin-top: 20vh;
     border: none;
     background-color: rgb(0, 0, 0);
+}
+
+#playbutton:hover{
+    cursor: pointer;
 }
 
 #playbutton img{
@@ -142,7 +149,7 @@ body{
 
 #howtoplay{
     margin-top: 15.1vh;
-    margin-left: 46.3%;
+    margin-left: 46.8vw;
 }
 
 #howtoplay button{
@@ -159,7 +166,7 @@ body{
 #howtoplay button:hover{
     background-color: white;
     border: 2px solid red;
-    font-size: 20px;
+    cursor: pointer;
 }
 
 #subhead{
@@ -170,6 +177,13 @@ body{
 }
 
 #gamepage{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
     z-index: -3;
 }
 
@@ -214,17 +228,20 @@ body{
     display: flex;
     justify-content: center;
 }
-button{
-    width: 120px;
-    padding: 10px 0;
-    border: 2.5px solid #424ae0;
+
+#gamepage button{
+    width: 20%;
+    height: 70%;
+    padding: 1% 0;
     border-radius: 5px;
     cursor: pointer;
 }
+
 #flip-button{
     background-color: #424ae0;
     color: #ffffff;
 }
+
 #flip-button:disabled{
     background-color: #e1e0ee;
     border-color: #e1e0ee;
@@ -239,44 +256,58 @@ button{
     visibility: hidden;
 }
 
+.header{
+    margin-top: 2vh;
+}
+
 .main{
-    margin-top: 20px;
-    grid-gap: 4%;
-    grid-template-columns: 20% 50% 20%;
+    margin-left: 4%;
+    grid-row-gap: 0%;
+    grid-column-gap: 4%;
+    grid-template-columns: 17% 50% 17%;
+
 }
 
 .ScoreBoard{
     display: grid;
     grid-template-columns: auto auto;
-    width: 300px;
     justify-items: end;
     color: white;
     background-color: black;
-    font-size: 1.3rem;
-    
+    font-size: 1rem;
+    align-items: center;
+    height: 20vh;
+    margin-top: 2rem;
 }
 
 .MainIn{
     font-size: 2rem;
 }
 
-#Play{
+#Play, #Com{
+    width: fit-content;
+    height: 2.5rem;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: -2rem;
+    font-size: 1.2vw;
+    padding: 0.8rem;
     text-align: center;
     background-color: black;
 }
 
-#Com{
-    text-align: center;
-    background-color: black;
-}
 
 #Live{
     text-align: center;
+    padding-left: 5%;
 }
 
 #LiveFootage{
-    height: 40vh;
+    height: 35vh;
+    width: 44vw;
     background-color: beige;
+    margin: auto;
+    margin-left: 3vw;
 }
 .values{
     justify-self: start;
@@ -287,52 +318,61 @@ button{
     display: flex;
     justify-content: center;
     border: 2px solid white;
-    margin: 4px;
+    margin: 1.4%;
     font-size: 2rem;
 }
 
 #Player ,#Computer{
     background-color: #8c182b;
     border-radius: 10px;
-    padding: 10px;
-    margin: 7px 10px;
+    margin: 1.4% auto;
+    width: fit-content;
+    padding: 2% 2rem;
 }
 
 #Condition{
-    background-color: aquamarine;
-    width: 60vw;
+    background-color: grey;
+    width: 75vw;
     margin: auto;
-    margin-top: 8vh;
-    height: 2.5rem;
+    margin-top: 4vh;
     visibility: hidden;
+    font-size: 1.8rem;
+    text-align: center;
 
 }
 #Runs{
-    padding: 10px;
+    text-align: center;
+    padding: 15% 0px;
+    font-size: 1.8rem;
     border-radius: 10px;
     background-color: rgb(4, 4, 93);
 }
 
 #Playershots, #ComputerShots{
-    margin: 0px 30px;
+    margin: 0 auto;
     background-color: black;
     justify-content: space-evenly;
+    align-items: center;
     border-radius: 5px;
+    height: 80%;
+    width: 90%;
 }
 
 #CurrentScore{
     background-color: beige;
     color: #8c182b;
-    font-size: 3.5rem;
-    padding: 15px 0;
+    font-size: 4vw;
+    height: 35%;
+    margin-top: 35%;
 }
 
 .gestures{
     padding: 0px;
-     margin: 10px; 
+     margin: 0.6rem; 
     border: 2px solid white;
     background-color: black;
     cursor: pointer;
+    height: 20%;
 }
 
 .gestures:hover{
@@ -344,6 +384,34 @@ button{
 }
 
 .gest{
-    height: 100px;
+    height: 80%;
+    width: 90%;
     padding: 5px;
 }
+
+.tutgest{
+    height: 25vh;
+    width: 50%;
+    margin-bottom: 1vh;
+}
+
+.active{
+    background-color: white;
+}
+
+.livevideo{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    object-fit: fill;
+}
+
+.batimg{
+    height: 35px;
+    width: 40px;
+    margin-left: 10px;
+}
+
+
