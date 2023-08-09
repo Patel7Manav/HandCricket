@@ -200,9 +200,9 @@ function Runs(playerShot){
     document.querySelector("#ComBalls").innerHTML=cballs;
     BackColor(playerShot);
     BackColorComp(computerShot);
-    disablebuttons(7000);
-    setTimeout(RemoveColor,7000,playerShot);   
-    setTimeout(RemoveColorComp,7000,computerShot);
+    disablebuttons(9000);
+    setTimeout(RemoveColor,9000,playerShot);   
+    setTimeout(RemoveColorComp,9000,computerShot);
     if(innings==2)
     {
       if(state==0)
