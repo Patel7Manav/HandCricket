@@ -34,22 +34,23 @@ body{
 
 .TutHead{
     text-align: center;
-    margin-top: 1.3rem;
-    margin-bottom: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 2.5rem;
     color: rgb(214, 15, 15);
-    text-decoration: underline;
+    letter-spacing: 2px;
+    text-shadow: 2px 3px 8px rgba(13, 81, 217, 0.8);
 }
 
 #format{
     display: inline-block;
-    width: 80vw;
-    margin-left: 7rem;
+    width: 80%;
+    margin: 0% 10% 2% 10%;
     font-size: 1.1rem;
 }
 
 #Tosswin{
-    visibility: hidden;
+    display: none;
     font-weight: bold;
     margin-top: 4vh;
 }
@@ -62,7 +63,7 @@ body{
 }
 .container{
     line-height: 150%;
-    background-color: rgb(241, 206, 176);
+    background-color: rgb(210, 149, 205);
     text-align: center;
     width: 500px;
     padding: 30px;
@@ -70,15 +71,17 @@ body{
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    box-shadow: 15px 30px 35px rgba(17, 1, 1, 0.1);
+    box-shadow: 20px 15px 30px 40px rgba(20, 1, 1, 0.1);
     border-radius: 10px;
     -webkit-perspective: 300px;
     perspective: 300px;
     z-index: 0;
+    line-height: 2.2em;
 }
 
 #TossStart{
     font-weight: bold;
+    font-size: 1.5em;
 }
 
 #TossResult{
@@ -86,18 +89,34 @@ body{
     justify-content: space-evenly;
     margin-top: 6vh;
     visibility: hidden;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .tossres {
-    width: 5rem;
-    height: 2.5rem;
-    padding: 6px ;
-    background-color: #eaeaea;
-    border: none;
-    cursor: pointer;
+     
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 5rem;
+  height: 2.5rem;
+  display: block;
+
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .4s ease-out;
   }
+  
+  .tossres:hover{
+    background-position: left bottom;
+    color: white;
+  }
+
   .tossres.selected {
-    background-color: #a5d6a7;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    background:black;
   }
 
 #startMatch{
@@ -105,6 +124,22 @@ body{
     margin-top: 8vh;
 }
 
+#matchbutton{
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.3em;
+    padding: 2%;
+    transition: 0.25s all ease-in-out;
+    color: white;
+    background: rgb(245, 65, 65);
+}
+
+#matchbutton:hover{
+    background: yellowgreen;
+    color: red;
+    border: none;
+    font-size: 1.5em;
+}
 
 #boy{
     height: 70px;
@@ -129,13 +164,15 @@ body{
     margin-top: 5vh;
     text-align: center;
     font-size: 40px;
+    text-shadow: 2px 3px 8px yellowgreen;
 }
 
 #playbutton{
-    margin-left: 47vw;
+    margin-left: 45.6%;
     margin-top: 20vh;
     border: none;
     background-color: rgb(0, 0, 0);
+    z-index: 3;
 }
 
 #playbutton:hover{
@@ -148,26 +185,71 @@ body{
 }
 
 #howtoplay{
+    z-index: 3;
     margin-top: 15.1vh;
-    margin-left: 46.8vw;
+    margin-left: 46.3%;
 }
 
-#howtoplay button{
+
+.glow-on-hover {
     width: fit-content;
-    padding: 0.8rem;
-    font-size: 18px;
-    font-weight: bold;
     border: none;
-    border-radius: 1.1rem;
-    color: blue;
-    background-color: yellow;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 1.5% 2.5%;
+    color: white;
 }
 
-#howtoplay button:hover{
-    background-color: white;
-    border: 2px solid red;
-    cursor: pointer;
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
 }
+
+.glow-on-hover:active {
+    color: white;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #3d0563;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
 
 #subhead{
     text-align: center;
@@ -238,14 +320,15 @@ body{
 }
 
 #flip-button{
-    background-color: #424ae0;
-    color: #ffffff;
+    color: yellowgreen;
+    padding: 3%;
+    font-size: 1em;
 }
 
 #flip-button:disabled{
-    background-color: #e1e0ee;
     border-color: #e1e0ee;
-    color: #101020;
+    color: transparent;
+    cursor: not-allowed;
 }
 
 .header, .main{
@@ -278,6 +361,7 @@ body{
     align-items: center;
     height: 20vh;
     margin-top: 2rem;
+    border: 2px solid white;
 }
 
 .MainIn{
@@ -294,12 +378,19 @@ body{
     padding: 0.8rem;
     text-align: center;
     background-color: black;
+    border: 2px solid white;
+    border-bottom: 0px;
+    text-shadow: 2px 2px 2px blue;
 }
 
+#Com{
+    text-shadow: 2px 2px 2px red;
+}
 
 #Live{
     text-align: center;
     padding-left: 5%;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
 }
 
 #LiveFootage{
@@ -308,6 +399,8 @@ body{
     background-color: beige;
     margin: auto;
     margin-left: 3vw;
+    border: 2px solid black;
+    
 }
 .values{
     justify-self: start;
@@ -323,15 +416,23 @@ body{
 }
 
 #Player ,#Computer{
-    background-color: #8c182b;
+    background-color: #2306b3;
     border-radius: 10px;
     margin: 1.4% auto;
     width: fit-content;
     padding: 2% 2rem;
+    text-shadow: 2px 2px 3px black;
+    box-shadow: 2px 2px 5px yellow;
+    border: none;
+}
+
+#Computer{
+    background-color: #b3073b;
 }
 
 #Condition{
-    background-color: grey;
+    background-color: black;
+    color: white;
     width: 75vw;
     margin: auto;
     margin-top: 4vh;
@@ -341,16 +442,13 @@ body{
 
 }
 #Runs{
-    text-align: center;
-    padding: 15% 0px;
-    font-size: 1.8rem;
-    border-radius: 10px;
-    background-color: rgb(4, 4, 93);
+    border: none;
 }
 
 #Playershots, #ComputerShots{
     margin: 0 auto;
     background-color: black;
+    /* border: none; */
     justify-content: space-evenly;
     align-items: center;
     border-radius: 5px;
@@ -360,10 +458,13 @@ body{
 
 #CurrentScore{
     background-color: beige;
-    color: #8c182b;
+    color: black;
+    text-shadow: 1px 1px 2px green;
     font-size: 4vw;
     height: 35%;
     margin-top: 35%;
+    border: 2px solid black;
+    box-shadow: 2px 4px 2px black;
 }
 
 .gestures{
@@ -414,4 +515,29 @@ body{
     margin-left: 10px;
 }
 
+.cards{
+    position: absolute;
+    top: 42vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: -1;
+}
 
+
+.cardid{
+    width: 15%;
+    height: 40%;
+    box-shadow: 0 0 10px 2px greenyellow;
+
+    border-radius: 10px;
+}
+
+#playercard{
+    box-shadow: -4px 5px 5px blue;
+}
+
+#comcard{
+    box-shadow: 4px 5px 5px #b3073b;
+}

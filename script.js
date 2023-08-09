@@ -65,7 +65,7 @@ function loadToss(tossval){
   }
   else
   {
-    document.querySelector("#Tosswin").style.visibility="visible";
+    document.querySelector("#Tosswin").style.display="block";
   }
   document.querySelector("#startMatch").style.visibility="visible";
   document.querySelector("#matchbutton").disabled=false;
@@ -107,7 +107,7 @@ function loadmatchscreen(){
   document.querySelector(".header").style.visibility="visible";
   document.querySelector(".main").style.visibility="visible";
   document.querySelector("#Condition").style.visibility="visible";
-  document.querySelector("#Tosswin").style.visibility="hidden";
+  document.querySelector("#Tosswin").style.display="block";
   document.querySelector("#TossResult").style.visibility="hidden";
   document.querySelector("#startMatch").style.visibility="hidden";
   if(headline=="")
@@ -207,11 +207,11 @@ function Runs(playerShot){
     {
       if(state==0)
       {
-        document.querySelector("#Condition").innerText=`Computer needs ${runs-cruns+1} runs in ${30-cballs} balls with ${1-cwickets} wickets remaining`;
+        document.querySelector("#Condition").innerText=`Computer needs ${Math.max(runs-cruns+1,0)} runs in ${30-cballs} balls with ${3-cwickets} wickets remaining`;
       }
       else 
       {
-        document.querySelector("#Condition").innerText=`Player needs ${cruns-runs+1} runs in ${30-balls} balls with ${1-wickets} wickets remaining`;
+        document.querySelector("#Condition").innerText=`Player needs ${Math.max(cruns-runs+1,0)} runs in ${30-balls} balls with ${3-wickets} wickets remaining`;
       }
       
       if(state==1)
